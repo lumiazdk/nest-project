@@ -33,6 +33,6 @@ import { UtilsService } from './utils/utils.service';
 export class AppModule implements NestModule {
   constructor(private readonly connection: Connection) {}
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(LoggerMiddleware).forRoutes('register');
+    consumer.apply(LoggerMiddleware).forRoutes('users', 'auth');
   }
 }
