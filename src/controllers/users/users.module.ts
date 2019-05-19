@@ -6,9 +6,11 @@ import { Users } from './users.entity';
 import { PassportModule } from '@nestjs/passport';
 
 @Module({
-    imports: [TypeOrmModule.forFeature([Users]), PassportModule.register({ defaultStrategy: 'jwt' })],
-    providers: [UsersService],
-    controllers: [UsersController],
-    
+  imports: [
+    TypeOrmModule.forFeature([Users]),
+    PassportModule.register({ defaultStrategy: 'jwt' }),
+  ],
+  providers: [UsersService],
+  controllers: [UsersController],
 })
-export class UsersModule { }
+export class UsersModule {}

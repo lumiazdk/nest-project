@@ -11,29 +11,28 @@ import { join } from 'path';
 import { UsersModule } from './controllers/users/users.module';
 import { UtilsService } from './utils/utils.service';
 
-
 @Module({
-  imports: [AuthModule, TypeOrmModule.forRoot({
-    type: 'mysql',
-    host: 'localhost',
-    port: 3306,
-    username: 'root',
-    password: 'lumiazdk640',
-    database: 'nest',
-    entities: [join(__dirname, '**/**.entity{.ts,.js}')],
-    synchronize: true,
-    logger: 'advanced-console'
-  }),
-    UsersModule],
+  imports: [
+    AuthModule,
+    TypeOrmModule.forRoot({
+      type: 'mysql',
+      host: 'localhost',
+      port: 3306,
+      username: 'root',
+      password: 'lumiazdk640',
+      database: 'nest',
+      entities: [join(__dirname, '**/**.entity{.ts,.js}')],
+      synchronize: true,
+      logger: 'advanced-console',
+    }),
+    UsersModule,
+  ],
   controllers: [AppController, AuthController],
   providers: [AppService, AuthService, UtilsService],
 })
 export class AppModule implements NestModule {
-  constructor(private readonly connection: Connection) { }
+  constructor(private readonly connection: Connection) {}
   configure(consumer: MiddlewareConsumer) {
-    consumer
-      .apply(LoggerMiddleware)
-      .forRoutes('register');
+    consumer.apply(LoggerMiddleware).forRoutes('register');
   }
 }
-

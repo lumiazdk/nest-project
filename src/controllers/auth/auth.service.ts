@@ -6,12 +6,11 @@ import { Users } from '../users/users.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 @Injectable()
 export class AuthService {
-
   constructor(
     @InjectRepository(Users)
     private readonly UsersRepository: Repository<Users>,
     private readonly jwtService: JwtService,
-  ) { }
+  ) {}
   async createToken(user) {
     await this.UsersRepository.save(user);
     const accessToken = this.jwtService.sign(user);
