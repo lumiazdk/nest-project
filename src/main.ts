@@ -5,6 +5,7 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { MyLogger } from './MyLogger';
 var hbs = require('hbs');
+import { HttpExceptionFilter } from './http-exception.filter';
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     logger: new MyLogger(),
@@ -25,7 +26,6 @@ async function bootstrap() {
   app.set('view engine', 'html');
   //运行hbs模块
   app.engine('html', hbs.__express);
-
   await app.listen(3000);
 }
 bootstrap();

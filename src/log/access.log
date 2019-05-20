@@ -1,3 +1,12 @@
 [1558328527288] POST /auth/register/register
 [1558335141234] POST /auth/register/register
 [1558335189122] POST /auth/register/register
+[1558335429846] POST /auth/register/register
+[1558337606078] POST /auth/register/register
+[1558337635051] GET /auth/
+[1558337650063] GET /users/login/login
+[1558337705649] GET /users/login/login
+[1558337706936] GET /users/login/login
+[1558337707881] GET /users/login/login
+[1558337711726] POST /auth/register/register
+[1558337740304] GET /users/login/login
