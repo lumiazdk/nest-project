@@ -11,7 +11,7 @@ import { UtilsService } from '../../utils/utils.service';
     TypeOrmModule.forFeature([Users]),
     PassportModule.register({ defaultStrategy: 'jwt' }),
   ],
-  providers: [UsersService,UtilsService],
+  providers: [UsersService, UtilsService],
   controllers: [UsersController],
 })
 export class UsersModule {}

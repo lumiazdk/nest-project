@@ -10,8 +10,4 @@ export class AppController {
   root() {
     return { message: 'Hello world!' };
   }
-  @All()
-  name(@Res() res: Response, @Req() req: Request) {
-    return res.render('404', { message: 'Hello world!' });
-  }
 }

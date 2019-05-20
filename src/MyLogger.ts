@@ -15,7 +15,8 @@ function write(name, message) {
 }
 export class MyLogger extends Logger implements LoggerService {
   log(message: string) {
-    write('log', message);
+    console.log(message);
+    // write('log', message);
   }
   error(message: string, trace: string) {
     // add your tailored logic here

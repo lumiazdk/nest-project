@@ -34,7 +34,7 @@ import { Users } from './controllers/users/users.entity';
       logger: 'advanced-console',
     }),
     UsersModule,
-    AuthModule
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
