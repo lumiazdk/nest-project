@@ -4,13 +4,14 @@ import { UsersController } from './users.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Users } from './users.entity';
 import { PassportModule } from '@nestjs/passport';
+import { UtilsService } from '../../utils/utils.service';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([Users]),
     PassportModule.register({ defaultStrategy: 'jwt' }),
   ],
-  providers: [UsersService],
+  providers: [UsersService,UtilsService],
   controllers: [UsersController],
 })
 export class UsersModule {}

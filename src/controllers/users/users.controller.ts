@@ -7,15 +7,21 @@ import {
   ApiUseTags,
   ApiBearerAuth,
 } from '@nestjs/swagger';
+import { UtilsService } from '../../utils/utils.service';
+
 @ApiUseTags('users')
 @ApiBearerAuth()
 @Controller('users')
 export class UsersController {
-  constructor(private readonly UsersService: UsersService) {}
+  constructor(
+    private readonly UsersService: UsersService,
+    private readonly UtilsService: UtilsService,
+  ) {}
 
   @Get()
   @UseGuards(AuthGuard())
-  findAllUser() {
-    return this.UsersService.findAll();
+  async findAllUser() {
+    let users = await this.UsersService.findAll();
+    return this.UtilsService.success(users);
   }
 }

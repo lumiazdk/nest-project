@@ -17,7 +17,7 @@ import {
 } from '@nestjs/swagger';
 
 import { AuthService } from './auth.service';
-import { CreateUserDto } from './create-user.dto';
+import { CreateUserDto } from './dto/create-user.dto';
 import { ValidationPipe } from '../../pips/validation.pipe';
 import { join } from 'path';
 import { createWriteStream } from 'fs';
