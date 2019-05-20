@@ -4,6 +4,7 @@ import { join } from 'path';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { MyLogger } from './MyLogger';
+var hbs = require('hbs');
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     logger: new MyLogger(),
@@ -20,7 +21,11 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, document);
   app.useStaticAssets(join(__dirname, '..', 'public'));
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
-  app.setViewEngine('hbs');
+  //指定模板后缀名为html
+  app.set('view engine', 'html');
+  //运行hbs模块
+  app.engine('html', hbs.__express);
+
   await app.listen(3000);
 }
 bootstrap();

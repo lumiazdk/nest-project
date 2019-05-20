@@ -1,0 +1,1 @@
+[Mon May 20 2019 13:02:08 GMT+0800 (CST)] "secretOrPrivateKey" has been deprecated, please use the new explicit "secretOrKeyProvider" or use "privateKey"/"publicKey" exclusively.
