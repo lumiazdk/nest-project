@@ -3,11 +3,15 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { LoggerMiddleware } from './middlewares/logger.middleware';
 import { AuthModule } from './controllers/auth/auth.module';
+import { PostsModule } from './controllers/posts/posts.module';
+
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Connection } from 'typeorm';
 import { join } from 'path';
 import { UsersModule } from './controllers/users/users.module';
 import { Users } from './controllers/users/users.entity';
+import { Posts } from './controllers/posts/posts.entity';
+
 
 @Module({
   imports: [
@@ -29,12 +33,13 @@ import { Users } from './controllers/users/users.entity';
       username: 'root',
       password: 'lumiazdk640',
       database: 'nest2',
-      entities: [Users],
+      entities: [Users,Posts],
       synchronize: true,
       logger: 'advanced-console',
     }),
     UsersModule,
     AuthModule,
+    PostsModule
   ],
   controllers: [AppController],
   providers: [AppService],
@@ -42,6 +47,6 @@ import { Users } from './controllers/users/users.entity';
 export class AppModule implements NestModule {
   constructor(private readonly connection: Connection) {}
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(LoggerMiddleware).forRoutes('users', 'auth');
+    consumer.apply(LoggerMiddleware).forRoutes('users', 'auth','posts');
   }
 }
